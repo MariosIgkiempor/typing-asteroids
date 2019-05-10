@@ -1,13 +1,11 @@
 #include "Asteroid.h"
 
+Asteroid::Asteroid(){}
 Asteroid::Asteroid(Vec2D p, std::string w)
 {
   vecPosition = p;
+  vecVelocity = { rand() % 6 - 3, rand() % 10 };
   sWord = w;
-}
-
-Asteroid Asteroid::destroy() 
-{
 }
 
 bool Asteroid::OffScreen()
@@ -17,7 +15,12 @@ bool Asteroid::OffScreen()
 
 void Asteroid::Update()
 {
-  vecPosition.y += 5;
+  // Move the asteroids by the velocity
+  vecPosition.x += vecVelocity.x;
+  vecPosition.y += vecVelocity.y;
+
+  // Slightly adjust the x component of the velocity
+  vecVelocity.x = rand() % 6 - 3;
 }
 
 void Asteroid::Show(SDL_Surface* surface) 
@@ -39,3 +42,7 @@ void Asteroid::Show(SDL_Surface* surface)
 std::string Asteroid::GetWord() { return sWord; }
 
 Vec2D Asteroid::GetPosition() { return vecPosition; }
+Vec2D Asteroid::GetVelocity() { return vecVelocity; }
+
+void Asteroid::SetVelocity(Vec2D v) { vecVelocity = v; }
+void Asteroid::SetPosition(Vec2D v) { vecPosition = v; }

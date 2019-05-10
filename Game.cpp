@@ -91,12 +91,10 @@ void Game::Run()
     // Update logic
     if (bWordEntered)
     {
-      std::cout << sInputWord << std::endl;
       // Find asteroid
       int closestAsteroidIndex = FindClosestAsteroidIndex();
       if (closestAsteroidIndex >= 0)
       {
-        vAsteroids.erase(vAsteroids.begin() + closestAsteroidIndex);
         if (vAsteroids[closestAsteroidIndex].GetWord() == sInputWord) 
         {
           std::cout << "success" << std::endl;
@@ -113,6 +111,7 @@ void Game::Run()
             vAsteroids.push_back(a);
           }
         }
+        vAsteroids.erase(vAsteroids.begin() + closestAsteroidIndex);
       }
 
 

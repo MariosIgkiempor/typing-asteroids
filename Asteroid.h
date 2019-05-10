@@ -9,15 +9,20 @@
 
 class Asteroid
 {
+protected:
   Vec2D vecPosition;
+  Vec2D vecVelocity;
   std::string sWord;
 
 public:
+  Asteroid();
   Asteroid(Vec2D p, std::string w);
-  Asteroid destroy();
   bool OffScreen();
   std::string GetWord();
   Vec2D GetPosition();
+  Vec2D GetVelocity();
+  void SetVelocity(Vec2D v);
+  void SetPosition(Vec2D v);
   void Update();
   void Show(SDL_Surface* surface);
 };
