@@ -40,7 +40,7 @@ void Renderer::Render(std::string inputWord = "")
 {
   SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0x00, 0x00, 0x00));
   auto vAsteroids = game->GetAsteroids();
-  for (std::size_t i = 0; i < vAsteroids.size(); ++i) vAsteroids[i].Show(surface);
+  for (std::size_t i = 0; i < vAsteroids.size(); ++i) vAsteroids[i]->Show(surface);
   RenderInputWord(inputWord);
   SDL_UpdateWindowSurface(window);
 }

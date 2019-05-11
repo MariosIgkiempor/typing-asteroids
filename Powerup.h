@@ -5,6 +5,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <string>
 #include <vector>
+#include <memory>
 #include "Vec2D.h"
 #include "Constants.h"
 #include "Asteroid.h"
@@ -15,21 +16,22 @@ class Powerup : public Asteroid
 {
 public:
   Powerup();
-  Powerup(Vec2D p);
   ~Powerup();
-  void Show(SDL_Surface* surface);
-  virtual void UsePower(std::vector<Asteroid*>& vAsteroids) = 0;
+  Powerup(Vec2D p);
+  virtual void UsePower(std::vector<std::shared_ptr<Asteroid>>& vObjects);
 };
 
 class PowerupSlowDown : public Powerup
 {
+public:
   PowerupSlowDown(Vec2D p);
-  void UsePower(std::vector<Asteroid*>& vObjectes);
+  void UsePower(std::shared_ptr<Asteroid>& a);
 };
 
 class PowerupReset : public Powerup
 {
+public:
   PowerupReset(Vec2D p);
-  void UsePower(std::vector<Asteroid*>& vObjects);
+  void UsePower(std::shared_ptr<Asteroid>& a);
 };
 #endif

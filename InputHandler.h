@@ -6,12 +6,13 @@
 #include "Renderer.h"
 #include "Game.h"
 
-class Game;
+// Forward declaration of needed classes
 class Renderer;
+class Game;
 
 class InputHandler 
 {
-  Renderer* renderer;
+  Renderer* renderer; // Instance of the renderer in case we need to quit it
   
 public:
   InputHandler();

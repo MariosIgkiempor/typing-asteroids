@@ -10,9 +10,11 @@
 class Asteroid
 {
 protected:
-  Vec2D vecPosition;
-  Vec2D vecVelocity;
-  std::string sWord;
+  Vec2D vecPosition;  // Position of the asteroid on the window
+  Vec2D vecVelocity;  // Velocity of the asteroid in both axises
+  std::string sWord;  // The word of the asteroid
+  SDL_Color color;    // Color of the astroid on the screen
+  bool bIsPowerup;    // Flag indicating if the asteroid is a powerup
 
 public:
   Asteroid();
@@ -23,8 +25,10 @@ public:
   Vec2D GetVelocity();
   void SetVelocity(Vec2D v);
   void SetPosition(Vec2D v);
+  SDL_Color GetColor();
+  bool IsPowerup();
   void Update();
-  void Show(SDL_Surface* surface);
+  virtual void Show(SDL_Surface* surface);
 };
 
 #endif

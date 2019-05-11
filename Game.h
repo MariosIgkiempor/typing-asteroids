@@ -7,9 +7,11 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <memory>
 #include "Renderer.h"
 #include "InputHandler.h"
 #include "Asteroid.h"
+#include "Powerup.h"
 #include "Constants.h"
 
 class Renderer;
@@ -19,7 +21,7 @@ class Game
   Renderer* renderer;
   InputHandler* inputHandler;
   SDL_Window* window;
-  std::vector<Asteroid> vAsteroids;
+  std::vector<std::shared_ptr<Asteroid>> vAsteroids;
   bool bRunning;
   bool bWordEntered;
   std::string sInputWord;
@@ -36,7 +38,7 @@ public:
   void SetInputWord(std::string w);
   void SetTempInputWord(std::string w);
   std::string GetTempInputWord();
-  std::vector<Asteroid> GetAsteroids();
+  std::vector<std::shared_ptr<Asteroid>> GetAsteroids();
 };
 
 #endif
